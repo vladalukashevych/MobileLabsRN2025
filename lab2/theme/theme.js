@@ -6,7 +6,7 @@ import { darkTheme } from "./dark";
 export const ThemeContext = createContext();
 
 export const ThemeProviderWrapper = ({ children }) => {
-    const [theme, setTheme] = useState(lightTheme); // Початково світла тема
+    const [theme, setTheme] = useState(darkTheme);
 
     const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme === lightTheme ? darkTheme : lightTheme));

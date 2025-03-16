@@ -50,7 +50,6 @@ const UserGroup = styled.Text`
 const Container = styled.View`
     flex: 1;
     background-color: ${({theme}) => theme.background};
-    padding: 20px;
 `;
 
 const MenuContainer = styled.View`
@@ -69,6 +68,21 @@ const Avatar = ({imageSource, username, group}) => (
     </AvatarContainer>
 );
 
+const StyledButton = styled.TouchableOpacity`
+  background-color: ${({ theme }) => theme.primary}; 
+  padding: 9px 20px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+`;
+
+const ButtonText = styled.Text`
+  color: ${({ theme }) => theme.buttonText}; 
+  font-size: 14px;
+  font-weight: bold;
+`;
+
 
 
 
@@ -85,7 +99,9 @@ export default function ProfileScreen() {
             <MenuContainer>
                 <MenuItems menuItems={menuItems}/>
             </MenuContainer>
-            <Button title="Toggle Theme" onPress={toggleTheme}/>
+            <StyledButton onPress={toggleTheme}>
+                <ButtonText>Change Theme</ButtonText>
+            </StyledButton>
         </Container>
     );
 }

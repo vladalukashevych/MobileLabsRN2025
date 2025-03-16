@@ -5,6 +5,7 @@ import {FlatList, View} from "react-native";
 const MenuItemContainer = styled.TouchableOpacity`
     background-color: ${({theme}) => theme.menuItem};
     padding: 20px 20px 20px 14px;
+    margin: 0 20px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
