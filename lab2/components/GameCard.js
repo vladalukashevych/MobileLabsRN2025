@@ -4,7 +4,8 @@ const Card = styled.View`
     background-color: ${({theme}) => theme.cardBackground};
     border-radius: 10px;
     overflow: hidden;
-    margin: 10px 20px;
+    height: 230px;
+    width: 350px;
 `;
 
 const GameImage = styled.Image`
@@ -71,22 +72,25 @@ const NewPrice = styled.Text`
 const PlatformIcon = styled.Image`
     height: 16px;
     width: 16px;
+    margin-left: 8px;
 `;
 
-export default function GameCard({game, subtitle}) {
+export default function GameCard({game}) {
     return (
         <Card>
             <GameImage source={game.image}/>
             <Overlay>
                 <GameTitle>{game.title}</GameTitle>
-                <Subtitle>{subtitle}</Subtitle>
+                <Subtitle>{game.subtitle}</Subtitle>
                 <BottomRow>
                     <PriceRow>
                         <DiscountTag>{game.discount}</DiscountTag>
                         <OldPrice>{game.price}</OldPrice>
                         <NewPrice>{game.discountedPrice}</NewPrice>
                     </PriceRow>
-                    <PlatformIcon source={require("../assets/images/microsoft-windows-22.png")}/>
+                    {game.icons.map((icon, index) => (
+                        <PlatformIcon key={index} source={icon} />
+                    ))}
                 </BottomRow>
             </Overlay>
         </Card>
