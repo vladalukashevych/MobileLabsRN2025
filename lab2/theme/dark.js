@@ -10,4 +10,5 @@ export const darkTheme = {
     mainNavBackground: "#12141C",
     mainNavIconActive: "#FFFFFF",
     mainNavIconInactive: "#4B5664",
+    menuItem: "#202532",
 };
