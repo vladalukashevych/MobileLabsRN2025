@@ -1,4 +1,5 @@
-import {View} from "react-native";
+import {useState} from "react";
+import {View, ImageBackground} from "react-native";
 import styled from "styled-components/native";
 import TabSwitch from "../components/TabSwitch";
 import MenuItems from "../components/MenuItems";
@@ -65,34 +66,49 @@ const GradientBackground = styled(LinearGradient).attrs(({theme}) => ({
     start: {x: 0, y: 0},
     end: {x: 0, y: 1},
 }))`
+    flex: 1;
+`;
+
+const GradientWrapper = styled.View`
     margin-top: 19px;
     height: 167px;
     width: 100%;
-
 `;
-
 
 const CodeContainer = styled.View`
     flex-direction: column;
     align-items: center;
+
 `;
 
+const tabsList = ["Guard", "Confirmations"];
 
 export default function SafetyScreen() {
+    const [selectedTab, setSelectedTab] = useState(tabsList[0]);
+
     return (
         <Container>
             <Header title="Safety" showSearch={false}/>
-            <TabSwitch/>
-            <GradientBackground>
-                <CodeContainer>
-                    <Subtitle>Logged in as player</Subtitle>
-                    <Title>N5KCV</Title>
+            <TabSwitch tabs={tabsList} onTabChange={setSelectedTab}/>
+            <GradientWrapper>
 
-                    <ProgressBar>
-                        <Progress/>
-                    </ProgressBar>
-                </CodeContainer>
-            </GradientBackground>
+                <GradientBackground>
+                    <ImageBackground
+                        source={require("../assets/images/stroke.png")}
+                        style={{width: "100%", height: "100%"}}
+                        resizeMode="cover"
+                    >
+                        <CodeContainer>
+                            <Subtitle>Logged in as player</Subtitle>
+                            <Title>N5KCV</Title>
+
+                            <ProgressBar>
+                                <Progress/>
+                            </ProgressBar>
+                        </CodeContainer>
+                    </ImageBackground>
+                </GradientBackground>
+            </GradientWrapper>
             <Description>
                 You'll enter your code each time you enter your password to sign in to your Steam account.
             </Description>

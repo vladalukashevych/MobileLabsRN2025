@@ -22,17 +22,21 @@ const TabText = styled.Text`
     font-size: 14px;
 `;
 
-export default function TabSwitch() {
-    const [activeTab, setActiveTab] = useState("Guard");
+export default function TabSwitch({ tabs, onTabChange }) {
+    const [activeTab, setActiveTab] = useState(tabs[0]);
+
+    const handleTabPress = (tab) => {
+        setActiveTab(tab);
+        onTabChange(tab);
+    };
 
     return (
         <TabContainer>
-            <TabButton isActive={activeTab === "Guard"} onPress={() => setActiveTab("Guard")}>
-                <TabText isActive={activeTab === "Guard"}>Guard</TabText>
-            </TabButton>
-            <TabButton isActive={activeTab === "Confirmations"} onPress={() => setActiveTab("Confirmations")}>
-                <TabText isActive={activeTab === "Confirmations"}>Confirmations</TabText>
-            </TabButton>
+            {tabs.map((tab) => (
+                <TabButton key={tab} isActive={activeTab === tab} onPress={() => handleTabPress(tab)}>
+                    <TabText isActive={activeTab === tab}>{tab}</TabText>
+                </TabButton>
+            ))}
         </TabContainer>
     );
 }
