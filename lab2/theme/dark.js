@@ -16,4 +16,5 @@ export const darkTheme = {
     menuItem: "#202532",
     greenHightlight: "#00D44B",
     newsTag: "#B63DB6",
+    strokeTint: "transparent",
 };

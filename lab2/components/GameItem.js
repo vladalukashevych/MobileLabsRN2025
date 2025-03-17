@@ -1,4 +1,6 @@
 import styled from "styled-components/native";
+import {useContext} from "react";
+import {ThemeContext} from "../theme/theme";
 
 const GameContainer = styled.View`
     flex-direction: row;
@@ -77,6 +79,7 @@ const PlatformIcon = styled.Image`
 
 export default function GameItem({game}) {
     const hasDiscount = game.discount && game.price;
+    const { theme } = useContext(ThemeContext);
 
     return (
         <GameContainer>
@@ -85,7 +88,7 @@ export default function GameItem({game}) {
                 <GameTitle>{game.title}</GameTitle>
                 <PlatformRow>
                     {game.icons.map((icon, index) => (
-                        <PlatformIcon key={index} source={icon} />
+                        <PlatformIcon key={index} source={icon} style={{ tintColor: theme.textSecondary }} />
                     ))}
                     <Platform>{game.platform}</Platform>
                 </PlatformRow>

@@ -101,7 +101,7 @@ export default function ChatItem({chat, onPress}) {
             <ChatDetails>
                 <Username>{chat.username}</Username>
                 <DetailsLine>
-                    {chat.isLastMessageYours && <LastMessageYou>You:</LastMessageYou>}
+                    {chat.isLastMessageYours && <LastMessageYou>You: </LastMessageYou>}
                     <MessagePreview>{chat.lastMessage}</MessagePreview>
                     <TextSeparator> • </TextSeparator>
                     <DateText>{chat.date}</DateText>

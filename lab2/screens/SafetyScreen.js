@@ -1,10 +1,12 @@
-import {useState} from "react";
-import {View, ImageBackground} from "react-native";
+import {useContext, useState} from "react";
+import {View, ImageBackground, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 import TabSwitch from "../components/TabSwitch";
 import MenuItems from "../components/MenuItems";
 import Header from "../components/Header";
 import {LinearGradient} from "expo-linear-gradient";
+import {ThemeContext} from "../theme/theme";
+import {darkTheme} from "../theme/dark";
 
 
 const menuItems = [
@@ -51,7 +53,7 @@ const Progress = styled.View`
 const Description = styled.Text`
     color: ${({theme}) => theme.text};
     font-size: 14px;
-    margin: 46px 20px 0;
+    margin: 25px 20px 0;
 `;
 
 const Tip = styled.Text`
@@ -81,10 +83,24 @@ const CodeContainer = styled.View`
 
 `;
 
+const Strokes = styled(ImageBackground).attrs({
+    resizeMode: "cover",
+})`
+    width: 100%;
+    height: 100%;
+`;
+
+const TintOverlay = styled.View`
+    ${StyleSheet.absoluteFillObject}
+    background-color: ${({theme}) => theme.strokeTint};
+    opacity: 0;
+`;
+
 const tabsList = ["Guard", "Confirmations"];
 
 export default function SafetyScreen() {
     const [selectedTab, setSelectedTab] = useState(tabsList[0]);
+    const { theme } = useContext(ThemeContext);
 
     return (
         <Container>
@@ -93,11 +109,17 @@ export default function SafetyScreen() {
             <GradientWrapper>
 
                 <GradientBackground>
-                    <ImageBackground
-                        source={require("../assets/images/stroke.png")}
-                        style={{width: "100%", height: "100%"}}
-                        resizeMode="cover"
+
+                    <Strokes
+                        source={theme === darkTheme
+                            ? require("../assets/images/stroke.png")
+                            : require("../assets/images/stroke-white.png")
+                        }
                     >
+
+
+                    <TintOverlay/>
+
                         <CodeContainer>
                             <Subtitle>Logged in as player</Subtitle>
                             <Title>N5KCV</Title>
@@ -106,7 +128,7 @@ export default function SafetyScreen() {
                                 <Progress/>
                             </ProgressBar>
                         </CodeContainer>
-                    </ImageBackground>
+                    </Strokes>
                 </GradientBackground>
             </GradientWrapper>
             <Description>

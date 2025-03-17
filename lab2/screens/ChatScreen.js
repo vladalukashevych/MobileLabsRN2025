@@ -32,7 +32,7 @@ const chatList = [
     {
         id: "3",
         username: "Player123",
-        lastMessage: " Ok",
+        lastMessage: "Ok",
         date: "14 Jun",
         avatar: require("../assets/images/avatar-main.png"),
         isOnline: false,
