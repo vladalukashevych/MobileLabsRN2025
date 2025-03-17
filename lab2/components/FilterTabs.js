@@ -20,6 +20,12 @@ const TabText = styled.Text`
     font-size: 14px;
 `;
 
+const SearchIcon = styled(Ionicons)`
+    color: ${({theme}) => theme.textSecondary};
+    font-size: 14px;
+    top: 2px;
+`;
+
 export default function FilterTabs({tabs, onTabChange, showSearch}) {
     const [activeTab, setActiveTab] = useState(tabs[0]);
 
@@ -30,7 +36,7 @@ export default function FilterTabs({tabs, onTabChange, showSearch}) {
 
     return (
         <Container>
-            {showSearch && <SearchIcon name="search-outline"/>}
+            {showSearch && <Tab><SearchIcon name="search-outline"/></Tab>}
             <FlatList
                 data={tabs}
                 horizontal
