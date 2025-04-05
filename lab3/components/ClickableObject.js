@@ -68,6 +68,7 @@ const ClickableObject = ({onScore}) => {
         })
         .onEnd(() => {
             savedScale.value = scale.value;
+            onScore(14, 'pinch');
         });
 
     const gestures = Gesture.Simultaneous(
