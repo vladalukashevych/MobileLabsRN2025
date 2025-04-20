@@ -39,15 +39,17 @@ export default function FileViewScreen({ route }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 25,
+        padding: 16,
     },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 15,
+        paddingHorizontal: 9,
     },
     box: {
         backgroundColor: '#f5f5f5',
         borderRadius: 8,
+        paddingHorizontal: 9,
     },
 });
